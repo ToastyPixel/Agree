@@ -6,20 +6,27 @@ If they accept, they can play. If they deny, they’re kicked with a customizabl
 
 ---
 
+## What’s new in 1.0.1
+
+- 🧾 **Acceptance logging** – When a player agrees, their username and UUID are recorded in a log file for simple audit/tracking.
+- 🔧 **Polish & fixes** – Small improvements to messaging and overall GUI flow.
+
+---
+
 ## Features
 
-- 📘 **Join GUI** – Automatically opens a chest GUI every time a player joins.
-- 📖 **Rule Book** – Center item is a book showing your custom message from the config.
-- ✅ **Agree / ❌ Deny Buttons**  
-  - Button names are fully configurable (you don’t have to use “Agree” / “Deny”).  
-  - Agree lets the player continue and can send them a custom chat message.  
-  - Deny kicks the player with a configurable disconnect message.
-- 🎨 **Fully configurable text**  
-  - GUI title  
-  - Book lore lines  
-  - Button names  
-  - Kick message  
-  All support classic `&` color codes.
+- 📘 **Join GUI** – Automatically opens a chest-style agreement GUI every time a player joins.
+- 📖 **Rule Book** – Center item displays your custom rules or info from the config.
+- ✅ **Agree / ❌ Deny Buttons**
+  - Button names are fully configurable.
+  - **Agree** lets the player continue and can send a custom chat message.
+  - **Deny** disconnects the player with a configurable kick message.
+- 🧾 **Acceptance Logging (1.0.1)**
+  - Logs each acceptance with the player’s username and UUID (and timestamp if enabled in your build).
+- 🎨 **Fully configurable text**
+  - GUI title, book message lines, button names, agree message, and decline kick message.
+  - Supports classic `&` color codes.
+
 
 ---
 
@@ -31,6 +38,7 @@ If they accept, they can play. If they deny, they’re kicked with a customizabl
 4. Player clicks:
    - **Agree** → GUI closes, optional “thanks for agreeing” message is sent.
    - **Deny** → Player is kicked with your custom decline message.
+5. When a player joins there username and user id is logged into a log file to show that they have acceptd
 
 The GUI shows **every time a player joins**, so they must accept each session.
 
