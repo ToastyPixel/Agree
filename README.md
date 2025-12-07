@@ -72,7 +72,25 @@ gui:
   agree-button-name: "&a[ CLICK TO AGREE ]"
   decline-button-name: "&c[ DECLINE AND DISCONNECT ]"
 
+agree-delay:
+  enabled: true
+  #default 10 seconds
+  milliseconds: 10000
+
+sound:
+  agree:
+    enabled: true
+    sound: "ENTITY_PLAYER_LEVELUP"
+    volume: 1.0
+    pitch: 1.2
+
+
 messages:
+
+  too-fast:
+    - "&cPlease read the agreement first."
+    - "&7You can agree in &e{seconds}&7 seconds."
+
   # Shown in chat to the player after they agree.
   agreed: "&aThanks for agreeing! Enjoy your time on the server."
 
