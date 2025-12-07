@@ -1,127 +1,26 @@
-# Agree
+Agree is a lightweight Minecraft server plugin that ensures players read and accept your rules before they can play.
 
-**Agree** is a lightweight Minecraft plugin that shows players a chest-style GUI when they join your server.  
-In the middle is a book with your custom rules or info, and on the sides are two buttons (default: **Agree** / **Deny**).  
-If they accept, they can play. If they deny, they’re kicked with a customizable message.
+When a player joins, a clean chest-style GUI opens automatically. A book in the center displays your custom message (rules, info, terms, warnings — whatever you need). On the sides are two buttons: accept and deny. Both button names are fully configurable, so you’re not locked into “Agree” and “Deny”.
 
----
+If a player accepts, the GUI closes, they’re allowed to play, and they can receive a custom chat message. If they deny, they are immediately kicked with a configurable disconnect message. All text supports classic `&` color codes, including the GUI title, book message lines, button names, the agree message, and the kick message.
 
-## What’s new in 1.0.3
-
-### Added
-- ✅ **Agree sound** — plays a configurable sound when a player successfully accepts the agreement.
-- ✅ **Read-time delay** — players must wait a configurable amount of time before the **Agree** button will work.
-- ✅ **Too-fast messages** — custom warning lines with a `{seconds}` placeholder to show how long is left.
-- ✅ **Startup console banner** — shows plugin name/version, server + Minecraft version, Java version, and Modrinth link on enable.
-- ✅ **Modrinth update check** — checks for a newer version on startup and prints a console notice if one is available.
-
-### Improved
-- ✅ **Future-proof sound config** — supports modern `minecraft:...` sound keys and resolves older enum-style names for compatibility.
-- ✅ **Cleaner shutdown** — clears runtime caches/maps on disable to keep things tidy.
-
-### Fixed
-- ✅ **Rare join timing edge case** — added a safety check to avoid opening the GUI if a player disconnects before the scheduled open runs.
-- ✅ **Cleanup on quit** — ensures GUI tracking + delay timers are removed when a player leaves to avoid stale data.
-
-This update makes Agree feel more polished and modern, adds quality-of-life feedback for players.
+Agree is ideal for simple rule popups, performance warnings, or any “you must accept this before playing” agreement that should appear every time a player joins.
 
 ---
 
-## Features
+## Version highlights (more shown on changelog)
 
-- 📘 **Join GUI** – Automatically opens a chest-style agreement GUI every time a player joins.
-- 📖 **Rule Book** – Center item displays your custom rules or info from the config.
-- ✅ **Agree / ❌ Deny Buttons**
-  - Button names are fully configurable.
-  - **Agree** lets the player continue and can send a custom chat message.
-  - **Deny** disconnects the player with a configurable kick message.
-- 🧾 **Acceptance Logging (1.0.1)**
-  - Logs each acceptance with the player’s username and UUID (and timestamp if enabled in your build).
-- 🎨 **Fully configurable text**
-  - GUI title, book message lines, button names, agree message, and decline kick message.
-  - Supports classic `&` color codes.
+- **v1.0.3**
+  - Added a short **agree delay** so players can’t instantly click Agree.
+  - Added a configurable **agree sound** for better feedback.
+  - Added a cleaner **startup console message** with the plugin version and Modrinth link.
+  - Added an **update check** on startup.
 
+- **v1.0.2**
+  - Fixed duplicate acceptance log spam: the plugin now logs each player’s username and UUID **only once** when they click **Agree**, keeping `accepted.log` clean.
 
----
+- **v1.0.1**
+  - Added acceptance logging: when a player clicks **Agree**, their username and UUID are saved to a log file in the plugin’s **Agree** folder.
 
-## How it works
-
-1. Player joins the server.  
-2. The **Agree GUI** opens automatically.  
-3. Player reads your rules/info in the center book.  
-4. Player clicks:
-   - **Agree** → GUI closes, optional “thanks for agreeing” message is sent.
-   - **Deny** → Player is kicked with your custom decline message.
-5. When a player joins there username and user id is logged into a log file to show that they have acceptd
-
-The GUI shows **every time a player joins**, so they must accept each session.
-
----
-
-## Configuration
-
-The config file lets you customize everything the player sees.
-
-Example:
-
-```yaml
-# Agree plugin configuration
-# This GUI shows EVERY time a player joins.
-# They must click AGREE to play, or DECLINE to be kicked.
-
-gui:
-  # Title of the GUI (supports & color codes).
-  title: "&cServer Agreement"
-
-  # The text shown in the middle item (book) as lore.
-  # Each line is one lore line. & codes allowed.
-  message-lines:
-    - "&7This server is not very fast or good in performance."
-    - "&7Please &cdo not build lag machines &7or heavy farms."
-    - "&7Try to keep things simple and have a fun time!"
-    - ""
-    - "&eBy clicking &aAGREE &eyou accept these rules."
-
-  # Text for the buttons:
-  agree-button-name: "&a[ CLICK TO AGREE ]"
-  decline-button-name: "&c[ DECLINE AND DISCONNECT ]"
-
-agree-delay:
-  enabled: true
-  #default 10 seconds
-  milliseconds: 10000
-
-sound:
-  agree:
-    enabled: true
-    sound: "ENTITY_PLAYER_LEVELUP"
-    volume: 1.0
-    pitch: 1.2
-
-
-messages:
-
-  too-fast:
-    - "&cPlease read the agreement first."
-    - "&7You can agree in &e{seconds}&7 seconds."
-
-  # Shown in chat to the player after they agree.
-  agreed: "&aThanks for agreeing! Enjoy your time on the server."
-
-  # Kick message when a player clicks DECLINE.
-  # This is the screen they see when they get disconnected.
-  decline-kick-message: |
-    &cYou declined the server agreement.
-
-    &7This server is not very fast or good in performance,
-    &7and it cannot handle lag machines or very heavy farms.
-
-    &7To keep the server stable for everyone, we ask players
-    &7not to build laggy contraptions or intentionally try to
-    &7crash or slow down the server.
-
-    &cWe are really sorry for the inconvenience.
-    &7If you are happy to respect these rules, please
-    &7join again and click &aAGREE &7next time.
-
-    &7Thank you for understanding, and we hope to see you soon!
+- **v1.0.0**
+  - Initial release.
