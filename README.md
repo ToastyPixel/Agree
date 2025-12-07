@@ -6,10 +6,24 @@ If they accept, they can play. If they deny, they’re kicked with a customizabl
 
 ---
 
-## What’s new in 1.0.1
+## What’s new in 1.0.3
 
-- 🧾 **Acceptance logging** – When a player agrees, their username and UUID are recorded in a log file for simple audit/tracking.
-- 🔧 **Polish & fixes** – Small improvements to messaging and overall GUI flow.
+### Added
+- ✅ **Agree sound** — plays a configurable sound when a player successfully accepts the agreement.
+- ✅ **Read-time delay** — players must wait a configurable amount of time before the **Agree** button will work.
+- ✅ **Too-fast messages** — custom warning lines with a `{seconds}` placeholder to show how long is left.
+- ✅ **Startup console banner** — shows plugin name/version, server + Minecraft version, Java version, and Modrinth link on enable.
+- ✅ **Modrinth update check** — checks for a newer version on startup and prints a console notice if one is available.
+
+### Improved
+- ✅ **Future-proof sound config** — supports modern `minecraft:...` sound keys and resolves older enum-style names for compatibility.
+- ✅ **Cleaner shutdown** — clears runtime caches/maps on disable to keep things tidy.
+
+### Fixed
+- ✅ **Rare join timing edge case** — added a safety check to avoid opening the GUI if a player disconnects before the scheduled open runs.
+- ✅ **Cleanup on quit** — ensures GUI tracking + delay timers are removed when a player leaves to avoid stale data.
+
+This update makes Agree feel more polished and modern, adds quality-of-life feedback for players.
 
 ---
 
