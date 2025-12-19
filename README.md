@@ -10,6 +10,13 @@ Agree is ideal for simple rule popups, performance warnings, or any “you must 
 
 ## Version highlights (more shown on changelog)
 
+- **v1.0.4**
+  - Added **hourly Modrinth update checks** (only logs when an update is available — no “you’re latest” spam).
+  - Added a **visual Agree-button countdown** so players can see the wait time unlocking in real-time.
+  - Added **configurable wait button styling** (material/name/lore) with `{seconds}` placeholders.
+  - Improved **task cleanup** so countdown timers don’t linger on quit or after accepting/declining.
+  - Improved **config flexibility** by allowing GUI materials to be set in `config.yml` with safe fallbacks.
+
 - **v1.0.3**
   - Added a short **agree delay** so players can’t instantly click Agree.
   - Added a configurable **agree sound** for better feedback.
